@@ -1,45 +1,72 @@
-# 3. Focus (order)
-## Rationale
-### Test Rationale
-Logical order and groupings of interface components in the design of software applications and Web content are used to aid visual appeal and improve usability. This logic needs to be available for users with no vision, low vision and who rely on AT.
-
-### Test Method Rationale
-Focus/TAB order must follow the logical order to prevent instances where users become confused, make errors, or not be provided with the contextual meaning of components. Changes to the relative order of repeated components can also cause confusion..
-
+# 3. Focus Order
 ## Accessibility Requirements
-* WCAG SC 2.4.3. If [content] can be navigated sequentially and the navigation sequences affect meaning or operation, focusable components receive focus in an order that preserves meaning and operability.
-* WCAG SC 3.2.3. Navigational mechanisms that are repeated on multiple Web pages within a set of Web pages occur in the same relative order each time they are repeated, unless a change is initiated by the user.
+* [WCAG SC 2.4.3 Focus Order](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-focus-order.html) -- If a [content] can be navigated sequentially and the navigation sequences affect meaning or operation, focusable components receive focus in an order that preserves meaning and operability.
+* [WCAG SC 3.2.1 On Focus](http://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-receive-focus.html) -- When any component receives focus, it does not initiate a change of context.
 
-## Tools Necessary
-Physical system keyboard
+**This Baseline Requirement applies to software and Web content.**
 
-## Test Procedure
-Focus order is the sequence in which a user accesses elements on your website. Some users can’t use a mouse and will ‘tab’ through your website – they must access elements in an order that makes sense.
+## Test Method Rationale
+Using the keyboard to navigate facilitates inspection of focus order.
 
-### Selector (Identify Content)
-Select interactive interface components (links, form fields, drop down menus, show/hide content, tree views, pop ups/light boxes, frames, iframes, etc.) available using a mouse (hover and/or click).
+## Limitations, Assumptions, or Exceptions
+* Focus may be moved to a control either via the keyboard (e.g. tabbing to a control) or the mouse (e.g. clicking on a text field). Moving the mouse over a control does not move the focus unless scripting implements this behavior. 
+* While it is common and a best practice for some, Focus Order is not required to move left to right, top to bottom.
+* Without exception, focus must shift to modal dialog boxes and remain within the dialog box until the box is closed by the user.
+* Assistive technology will process aria live regions without a focus shift. Live regions that do not contain interactive content do not require a focus shift and would not be included in this test.
+* For some types of controls, clicking a control may also activate the control (e.g. button), which may, in turn, initiate a change in context. Controls that are clearly intended to initiate a change in context do not fail under this test.
+* This test evaluates 3.2.1 On Focus using only the keyboard to avoid unintentional activation of controls with a mouse.
+* [Change of context](https://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-receive-focus.html#context-changedef) is defined as: major changes in the content that, if made without user awareness, can disorient users who are not able to view the entire page simultaneously. Changes in context include changes of:
+    1. User agent
+    2. Viewport
+    3. Focus
+    4. Content that changes the meaning of the page
+
+* **Note:** A change of content is not always a change of context. Changes in content, such as an expanding outline, dynamic menu, or a tab control do not necessarily change the context, unless they also change one of the above (e.g., focus).
+* On Focus context change examples: Opening a new window, moving focus to a different component, going to a new page or window (including anything that would look to a user as if they had moved to a new page) or significantly re-arranging the content of a page/screen are examples of changes of context. (Above definition from [Understanding SC 3.2.1 On Focus](https://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-receive-focus.html))
+
+## Test Procedure for SC 2.4.3 Focus Order
+### Identify Content
+Keyboard accessible interface components (links, form fields, drop down menus, show/hide content, tree views, pop ups/light boxes, frames, iframes, etc.) that have a meaningful sequence of navigation.
 
 ### Test Instructions
-#### Tests for SC 2.4.3.
-1. Use the keyboard to navigate through interface components and content (including any hidden content). 
-1. If the order of content presented visually affects understanding or function of the content, then check that the focus order when using a keyboard matches the same logical order as the order presented visually. 
+1.	Use the keyboard to navigate through interface components.
+    1.	Use the keyboard to activate trigger controls that reveal hidden content (menus, dialogs, expandable tree list, etc.).
+        1.	Check that focus is moved to the revealed content. (It is acceptable to TAB once or use an arrow key to move the focus forward into the revealed content.)
+        2.	Advance the focus through the revealed content.
+    2.	Use the keyboard to close/hide the revealed content. 
+        1.	Check that focus is returned to the trigger control. (It is acceptable to [Shift+ TAB] once or use an arrow key to move the focus backward to the trigger control.
+2.	Check that the focus order preserves the meaning and usability of the page.
 
-##### Test Results for SC 2.4.3
-* If the test for SC 2.4.3 fails, then the content is not conformant to SC 2.4.3
+### Test Results
+If any of the above checks fail, then SC 2.4.3 and Baseline Requirement 3 fail.
 
-#### Tests for SC 3.2.3
-1. Use the keyboard to navigate through interface components and content (including any hidden content). Identify content elements that repeat over multiple linked pages or screens.
-    1. Check that the relative order of keyboard and/or visual focus is the same across pages.
-    1. Check that any change in the content order is only the result of a user-initiated change 
+## Test Procedure for SC 3.2.1 On Focus
+### Identify Content
+Keyboard accessible interface components (links, form fields, drop down menus, show/hide content, tree views, pop ups/light boxes, frames, iframes, etc.).
 
-##### Test Results for 3.2.3
-* If the test for SC 3.2.3 fails, then the content is not conformant to SC 3.2.3
+### Test Instructions
+1. Use the keyboard to move focus to and navigate through each interactive interface component (including form drop-down lists and form fields).
+2. Check that when an interface component receives focus, it does not initiate an unexpected change of context. Examples of a change of context include:
+    * Forms submitted automatically when a component receives focus
+    * New windows launched when a component receives focus
+    * Focus is moved to another component 
 
-## Baseline Requirement Outcome
-* If no content fails, then the content passes the Baseline Requirement
+### Test Results
+If any of the above checks fail, then SC 3.2.1 and Baseline Requirement 3 fail.
 
 ## Advisory: Tips for streamlined test processes
-* This test is for interactive interface components, excluding forms which are covered by the forms test.
-* To get to all components, it may require more than simply TABbing between items. For example, it may be necessary to tab to a set of components then use the arrow keys to get focus on individual components.
-* Tab order may be application specific—reflecting business logic—so it may be helpful to ask developers whether a seemingly non-logical order was intentional. It may be useful to verify order discrepancies using the Tab Index attribute, if it is present (Although a Tab Index is not required). It is also possible to Tab through components to see if there is a visual focus on static text.
-* For web content that is in layout tables, it is possible to produce a linearized representation that may be useful in determining whether a logical order is used. To linearize table content, use WAT (Tables - Linearize).
+* Tab order that initially appears illogical may still meet this requirement due to an application-specific business logic.
+* It may be useful to combine these tests with tests for keyboard navigation and visible focus.
+* It may be useful to provide instructions about what "modal dialog boxes" are and how they should behave.
+
+### WCAG 2.0 Techniques
+* The following sufficient techniques and/or common failures were considered when developing this test procedure for this baseline requirement:
+    * [G59: Placing the interactive elements in an order that follows sequences and relationships within the content](http://www.w3.org/TR/WCAG20-TECHS/G59.html) 
+    * [H4: Creating a logical tab order through links, form controls, and objects](http://www.w3.org/TR/WCAG20-TECHS/H4.html)
+    * [G107: Using "activate" rather than "focus" as a trigger for changes of context](http://www.w3.org/TR/2016/NOTE-WCAG20-TECHS-20161007/G107)
+    * [F55: Failure of Success Criteria 2.1.1, 2.4.7, and 3.2.1 due to using script to remove focus when focus is received](http://www.w3.org/TR/2016/NOTE-WCAG20-TECHS-20161007/F55)
+    * [SCR26: Inserting dynamic content into the Document Object Model immediately following its trigger element](https://www.w3.org/TR/WCAG20-TECHS/SCR26.html)
+    * [F85: Failure of Success Criterion 2.4.3 due to using dialogs or menus that are not adjacent to their trigger control in the sequential navigation order](https://www.w3.org/TR/WCAG20-TECHS/F85.html)
+
+----------------------------------------
+[Home/Table of Contents](index.md) | [Previous Baseline](02FocusVisible.md) | [Next Baseline](04RepetitiveContent.md)

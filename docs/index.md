@@ -1,9 +1,9 @@
-September 2017 | Version 3.0 (DRAFT)
+April 2018 | Version 3.0 (DRAFT)
 
 Harmonized Processes for Section 508 Testing: Baseline Tests for Software & Web Accessibility
 ==============================================
 
-# Document status, review, comments, and feedback
+## Document status, review, comments, and feedback
 This version is a DRAFT of version 3.0, not yet approved for distribution by the Interagency Trusted Tester Program (ITTP) Technical Working Group.
 
 For more information on the baseline tests and links to published streamlined test processes, training and certification programs, visit:
@@ -11,13 +11,13 @@ For more information on the baseline tests and links to published streamlined te
 
 For questions or to provide feedback, contact the DHS Accessibility Helpdesk at:
 
-<accessibility@dhs.gov> | <http://accessibility.dhs.gov>
+<accessibility@dhs.gov>; <http://accessibility.dhs.gov>
 
 202-447-0440 (Voice)
 
 202-447-5857 (TTY)
 
-# Contents:
+## Contents:
 Document status, review comments, and feedback
 
 [Introduction](introduction.md)
@@ -36,12 +36,13 @@ Document status, review comments, and feedback
 * Test tool instructions
 * Reporting results
 
-[*The Baseline Tests (\#1 - \#28)*](#contents-the-baseline-tests-1---28)
+[WCAG 2.0 Applicability to Software](00WCAG-Applicability.md)
+
+[*The Baseline Tests (\#1 - \#26)*](#contents-the-baseline-tests-1---26)
 
 Attachment A - Cross-Reference Tables
-* Baseline tests (cross-reference table)
-* Section 508 (cross-reference table
-* WCAG 2.0 (cross-reference table)
+* Baseline Tests (Cross-Reference Table)
+* WCAG 2.0 (Cross-Reference Table)
 
 Attachment B - Flashing content test advisory notes
 * Why to include a flashing content test in a test process
@@ -55,41 +56,37 @@ Attachment C - Baseline Test Report Checklists
 * Web+Software test
 * Summary of failures
 
-[Document Content Change Log](DocumentChange.md)
-
 [Document Content Change Log](DocumentChange1.md)
 * Version 1.0.6, March 2015
 * Version 1.1, February 2016
 * Version 2.0, October 2016
 * Version 2.0.1, November 2016
-* Version 3.0, September 2017
+* Version 3.0, April 2018 (tentative)
 
-# Contents: The Baseline Tests (\#1 - \#28)
-1. [Keyboard navigation](01KeyboardNavigation.md)
-2. [Focus (visible)](02FocusVisible.md)
-3. [Focus (order)](03FocusOrder.md)
-4. [Focus (Revealing hidden content)](04FocusHidden.md)
-5. [Repetitive Content](05RepetitiveContent.md)
-6. Multi-state components
-7. Images
-8. [Color (meaning)](08ColorMeaning.md)
-9. [Color (contrast)](09ColorContrast.md)
-10. *Flashing (reserved)*
-11. Forms (associated instructions)
-12. [Page Titles](12PageTitles.md)
-13. Data Tables (headers)
-14. Data Tables (cell-header association)
-15. [Headings](15Headings.md)
-16. Links and User controls
-17. [Language](17Language.md)
-18. [Audio (transcripts)](18AudioTranscript.md)
-19. [Video (descriptions)](19VideoDescription.md)
-20. [Synchronized media (captions)](20SyncMediaCap.md)
-21. [Synchronized media (descriptions)](21SyncMedia.md)
-22. [Style-sheet non-dependence](22Stylesheet.md)
-23. [Frames](23Frames.md)
-24. Alternate pages
-25. [Time outs](25Timeout.md)
-26. Image maps
-27. Plug-in Links
-28. Built-in accessibility features
+## Contents: The Baseline Tests (\#1 - \#26)
+1. [Keyboard Access](01Keyboard.md)
+2. [Focus Visible](02FocusVisible.md)
+3. [Focus Order](03FocusOrder.md)
+4. [Repetitive Content](04RepetitiveContent.md)
+5. [Changing Content](05Changing.md)
+6. [Images](06Images.md)
+7. [Sensory Characteristics](07Sensory.md)
+8. [Contrast](08Contrast.md)
+9. [Flashing](09Flashing.md)
+10. [Forms](10Forms.md)
+11. [Page Titles](11PageTitles.md)
+12. [Tables](12DataTables.md)
+13. [Content Structure](13Structure.md)
+14. [Links](14Links.md)
+15. [Language](15Language.md)
+16. [Audio-Only and Video-Only](16AudioVideo.md)
+17. [Synchronized Media](17SyncMedia.md)
+18. [Stylesheet Non-Dependence](18Stylesheet.md)
+19. [Frames and iFrames](19Frames.md)
+20. [Alternate Versions](20AlternateVersions.md)
+21. [Timed Events](21TimedEvents.md)
+22. [Resize Text](22Resize.md)
+23. [Multiple Ways](23MultipleWays.md)
+24. [Parsing](24Parsing.md)
+25. Authoring Tools (Placeholder)
+26. [User Preferences](26UserPreferences.md)
